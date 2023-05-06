@@ -30,6 +30,8 @@ exports.atualizarAluno = async (req, res) => {
     const result = await db.query('UPDATE alunos SET nome = ? WHERE matricula = ?', [nome, matricula]);
     if (result.affectedRows > 0) {
       res.json({ message: 'Aluno atualizado com sucesso' });
+    } else {
+      res.status(404).json({ error: 'Aluno não encontrado' });
     }
   } catch (err) {
     console.error(err);
