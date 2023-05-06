@@ -1,6 +1,6 @@
 const express = require('express');
-const db = require('./src/db')
 const alunoRouter = require('./src/routes/alunoRoute');
+const livrosRouter = require('./src/routes/livrosRoute');
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 
 // Rotas de alunos
 app.use('/alunos', alunoRouter);
+// Rotas de livros
+app.use('/livros', livrosRouter);
 
 app.listen(port, () => {
   console.log(`Servidor iniciado na porta ${port}`);

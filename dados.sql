@@ -4,3 +4,11 @@ CREATE TABLE alunos (
   nome VARCHAR(255) NOT NULL,
   PRIMARY KEY (matricula)
 );
+
+CREATE TABLE livros (
+  registro INT NOT NULL AUTO_INCREMENT,
+  titulo VARCHAR(255) NOT NULL,
+  autor VARCHAR(255) NOT NULL,
+  PRIMARY KEY (registro),
+  UNIQUE (titulo)
+);
