@@ -6,7 +6,7 @@ API para gerenciar empréstimos de livros em uma biblioteca.
 
 Para clonar o repositório, abra o terminal e execute o comando abaixo:
 
-`git clone https://github.com/SEU-USUARIO/biblioteca-api.git`
+`git clone https://github.com/SEU-USUARIO/books-api.git`
 
 ## Para instalar as dependências, abra o terminal e execute o comando abaixo na raiz do projeto:
 
