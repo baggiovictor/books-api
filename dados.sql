@@ -1,3 +1,5 @@
+create database biblioteca
+
 -- CREATE: criação da tabela alunos
 CREATE TABLE alunos (
   matricula INT NOT NULL AUTO_INCREMENT,
