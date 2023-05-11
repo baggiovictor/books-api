@@ -1,4 +1,6 @@
-create database biblioteca
+create database biblioteca;
+
+use biblioteca;
 
 -- CREATE: criação da tabela alunos
 CREATE TABLE alunos (
