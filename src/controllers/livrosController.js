@@ -2,7 +2,8 @@ const db = require('../db');
 
 exports.listarLivros = async (req, res) => {
   try {
-    const livros = await db.query('SELECT * FROM livros');
+    const [rows] = await db.query('SELECT * FROM livros');
+    const livros = JSON.parse(JSON.stringify(rows));
     res.json(livros);
   } catch (err) {
     console.error(err);

@@ -60,7 +60,8 @@ exports.create = async (req, res) => {
 
 exports.read = async (req, res) => {
   try {
-    const emprestimos = await db.query('SELECT * FROM emprestimos');
+    const [rows] = await db.query('SELECT * FROM emprestimos');
+    const emprestimos = JSON.parse(JSON.stringify(rows));
     res.json(emprestimos);
   } catch (err) {
     console.error(err);
@@ -78,12 +79,14 @@ exports.update = async (req, res) => {
       return res.status(404).json({ message: 'Empréstimo não encontrado' });
     }
 
-    const [livro] = await db.query('SELECT * FROM livros WHERE registro = ?', [registro_emprestimo]);
+    const livro = await db.query('SELECT * FROM livros WHERE registro = ?', [registro_emprestimo]);
 
-    if (!livro) {
+    if (!livro || livro.length === 0) {
       return res.status(404).json({ message: 'Livro não encontrado' });
     }
-    await db.query('UPDATE livros SET emprestado = false WHERE registro = ?', [livro.map(x => registro = x.registro)]);
+
+    await db.query('UPDATE livros SET emprestado = 0 WHERE registro = ?', [livro[0].registro]);
+
     await db.query('UPDATE emprestimos SET data_devolucao = ? WHERE registro_emprestimo = ?', [new Date(), registro_emprestimo]);
 
 

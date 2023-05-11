@@ -2,7 +2,8 @@ const db = require('../db');
 
 exports.listarAlunos = async (req, res) => {
   try {
-    const alunos = await db.query('SELECT * FROM alunos');
+    const [rows] = await db.query('SELECT * FROM alunos');
+    const alunos = JSON.parse(JSON.stringify(rows));
     res.json(alunos);
   } catch (err) {
     console.error(err);
@@ -42,7 +43,7 @@ exports.atualizarAluno = async (req, res) => {
 exports.excluirAluno = async (req, res) => {
   const matricula = req.params.matricula;
   try {
-    const result = await db.query('DELETE FROM alunos WHERE matricula = ?', [matricula]);
+    const result = await db.query('DELETE FROM alunos WHERE matricula = ? ON DELETE CASCADE', [matricula]);
     if (result.affectedRows > 0) {
       res.json({ message: 'Aluno excluído com sucesso' });
     } else {

@@ -16,5 +16,8 @@
     "mysql2": "^3.3.0",
     "nodemon": "^2.0.22",
     "sqlite3": "^5.1.6"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }
