@@ -1,3 +1,5 @@
+Alunos: Victor Baggio, Gustavo Lipinski, Luis Felipe Francisco
+
 # Biblioteca API
 
 API para gerenciar empréstimos de livros em uma biblioteca.
